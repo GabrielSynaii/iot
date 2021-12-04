@@ -13,6 +13,7 @@ const client = mqtt.connect(
 
 client.on("connect", () => {
   client.subscribe("iot/led");
+  client.subscribe("iot/dht");
 });
 
 client.on("message", (topic, message) => {
@@ -23,6 +24,15 @@ client.on("message", (topic, message) => {
   switch (topic) {
     case "iot/led":
       influx.writeMeasurement("led", [
+        {
+          fields: {
+            value: message,
+          },
+        },
+      ]);
+      break;
+    case "iot/dht":
+      influx.writeMeasurement("dht", [
         {
           fields: {
             value: message,
