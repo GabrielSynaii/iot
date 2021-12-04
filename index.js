@@ -7,9 +7,13 @@ const client = mqtt.connect(
 );
 
 client.on("connect", () => {
-  client.subscribe("test");
+  client.subscribe("iot/led");
 });
 
 client.on("message", (topic, message) => {
-  console.log({ topic, message: message.toString() });
+  switch (topic) {
+    case "iot/led":
+      console.log({ topic, message: message.toString() });
+      break;
+  }
 });
