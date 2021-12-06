@@ -1,6 +1,7 @@
 # First Steps
 
-Install node dependencies
+Install node dependencies:
+
 `npm install`
 
 Create ".env" file following ".env.example" scheme:
