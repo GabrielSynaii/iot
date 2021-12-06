@@ -42,3 +42,5 @@ client.on("message", (topic, message) => {
       break;
   }
 });
+
+require("./arduino")(client, "iot/dht", 5000);
